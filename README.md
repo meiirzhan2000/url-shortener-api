@@ -25,12 +25,12 @@ This project is a URL Shortener API that allows users to shorten long URLs and r
     └── index.js  # Main entry point for the application
 
 # Features
-    URL Shortening: Converts a long URL into a short, unique shortcode.
-    Cache Support: Uses NodeCache to store and retrieve shortened URLs quickly.
-    Firebase Firestore Support: If Firebase is configured, the app stores and retrieves URLs from Firestore for persistence.
-    Rate Limiting: Protects the API from abuse by limiting the number of requests per IP.
-    CORS: Ensures that the API only accepts requests from allowed origins.
-    URL Validation: Ensures that only valid URLs are accepted for shortening.
+URL Shortening: Converts a long URL into a short, unique shortcode.
+Cache Support: Uses NodeCache to store and retrieve shortened URLs quickly.
+Firebase Firestore Support: If Firebase is configured, the app stores and retrieves URLs from Firestore for persistence.
+Rate Limiting: Protects the API from abuse by limiting the number of requests per IP.
+CORS: Ensures that the API only accepts requests from allowed origins.
+URL Validation: Ensures that only valid URLs are accepted for shortening.
 
 Firebase account (optional, only needed for persistence with Firestore)
 
