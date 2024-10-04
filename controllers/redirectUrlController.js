@@ -1,7 +1,6 @@
 const { getDoc, doc } = require('firebase/firestore');
 const cache = require('../helpers/cache');
-
-console.log('Current keys in cache:', cache.keys());
+const db = require('../helpers/firebase');
 
 // Check if Firebase is available
 const isFirebaseAvailable = process.env.FIREBASE_API_KEY && process.env.FIREBASE_PROJECT_ID;
@@ -25,7 +24,12 @@ const redirectUrlController = async (req, res) => {
 
             if (docSnap.exists()) {
                 const { url } = docSnap.data();
-                    
+                
+                // Update the cache with the retrieved URL
+                let newUrlArray = cache.get('urls') || [];
+                newUrlArray.push({ shortcode, url });
+                cache.set('urls', newUrlArray);
+                
                 // Redirect to the original URL
                 return res.redirect(302, url);
             } else {
