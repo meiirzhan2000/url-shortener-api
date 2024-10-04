@@ -2,7 +2,7 @@
 
 This project is a URL Shortener API that allows users to shorten long URLs and retrieve the original URL using a unique shortcode. The API uses an in-memory cache (`NodeCache`) for fast retrieval and optionally uses Firebase Firestore for persistent storage if Firebase environment variables are available.
 
-# Project Structure
+## Project Structure
 
 url-shortener-api/
 │
