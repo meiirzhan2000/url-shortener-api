@@ -4,25 +4,25 @@ This project is a URL Shortener API that allows users to shorten long URLs and r
 
 ## Project Structure
 
-url-shortener-api/
-│
-├── controllers/
-│   ├── shortenUrlController.js  # Handles URL shortening and storing in cache/Firebase
-│   ├── redirectUrlController.js # Handles URL redirection based on shortcode
-│
-├── helpers/
-│   ├── cache.js  # Shared NodeCache instance
-│   ├── firebase.js  # Firebase initialization and Firestore access
-│
-├── middlewares/
-│   └── validateLocalhostMiddleware.js  # Middleware to validate and sanitize incoming URLs
-│
-├── node_modules/  # Node.js dependencies (not included in version control)
-├── .env  # Environment variables for Firebase configuration (not included in version control)
-├── .gitignore  # Ignores node_modules, .env, etc.
-├── README.md  # Project documentation
-├── package.json  # Project dependencies and scripts
-└── index.js  # Main entry point for the application
+    url-shortener-api/
+    │
+    ├── controllers/
+    │   ├── shortenUrlController.js  # Handles URL shortening and storing in cache/Firebase
+    │   ├── redirectUrlController.js # Handles URL redirection based on shortcode
+    │
+    ├── helpers/
+    │   ├── cache.js  # Shared NodeCache instance
+    │   ├── firebase.js  # Firebase initialization and Firestore access
+    │
+    ├── middlewares/
+    │   └── validateLocalhostMiddleware.js  # Middleware to validate and sanitize incoming URLs
+    │
+    ├── node_modules/  # Node.js dependencies (not included in version control)
+    ├── .env  # Environment variables for Firebase configuration (not included in version control)
+    ├── .gitignore  # Ignores node_modules, .env, etc.
+    ├── README.md  # Project documentation
+    ├── package.json  # Project dependencies and scripts
+    └── index.js  # Main entry point for the application
 
 # Features
     URL Shortening: Converts a long URL into a short, unique shortcode.
@@ -84,14 +84,14 @@ Firebase account (optional, only needed for persistence with Firestore)
 
 
 # How It Works with Cache and Firebase
-    When shortening a URL:
-        The app first validates the URL and generates a unique shortcode.
-        The URL and shortcode are stored in the in-memory cache (NodeCache).
-        If Firebase is available, the URL is also stored in Firestore for persistence.
-    When retrieving a URL:
-        The app first checks the cache for the requested shortcode.
-        If the URL is found in the cache, the user is redirected to the original URL.
-        If the URL is not in the cache but Firebase is available, the app retrieves the URL from Firestore and redirects the user.
-        If neither cache nor Firestore contains the URL, a 404 Not Found error is returned.
-    Caching Strategy
-        In-Memory Cache (NodeCache): URLs are stored in memory for quick access with a default TTL (Time-to-Live) of 1 hour. After 1 hour, the URLs are removed from the cache, but they remain in Firestore if Firebase is available.
+When shortening a URL:
+    The app first validates the URL and generates a unique shortcode.
+    The URL and shortcode are stored in the in-memory cache (NodeCache).
+    If Firebase is available, the URL is also stored in Firestore for persistence.
+When retrieving a URL:
+    The app first checks the cache for the requested shortcode.
+    If the URL is found in the cache, the user is redirected to the original URL.
+    If the URL is not in the cache but Firebase is available, the app retrieves the URL from Firestore and redirects the user.
+    If neither cache nor Firestore contains the URL, a 404 Not Found error is returned.
+Caching Strategy
+    In-Memory Cache (NodeCache): URLs are stored in memory for quick access with a default TTL (Time-to-Live) of 1 hour. After 1 hour, the URLs are removed from the cache, but they remain in Firestore if Firebase is available.
